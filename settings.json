@@ -1,1 +1,8 @@
-{}
+{
+    "token": "TOKEN_HERE",
+    "owners": [
+        "184547913509109761"
+    ],
+    "identifier": "~",
+    "delimiter": " "
+}

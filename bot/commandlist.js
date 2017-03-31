@@ -3,5 +3,15 @@
  */
 module.exports = {
     "ping": "ping",
-    "hello": "hello"
+    "hello": "hello",
+    "lock": "lock",
+    "stats": "stats",
+    "add": "add",
+    "remove": "remove",
+    "unlock": "unlock",
+    "play": "music/play",
+    "pause": "music/pause",
+    "queue": "music/queue",
+    "resume": "music/resume",
+    "setvol": "music/setvol"
 }

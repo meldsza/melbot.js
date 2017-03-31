@@ -1,5 +1,6 @@
 const bot = require('./bot.js');
 const settings = require('./../settings.json');
+const modules = require('./modules.js');
 let lock = false;
 bot.on('error', (err) => {
     /**
