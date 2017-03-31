@@ -1,0 +1,27 @@
+{
+  "name": "melbot.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meldsza/melbot.js.git"
+  },
+  "keywords": [
+    "Bot",
+    "Framework",
+    "Discord"
+  ],
+  "author": "Melroy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meldsza/melbot.js/issues"
+  },
+  "homepage": "https://github.com/meldsza/melbot.js#readme",
+  "dependencies": {
+    "request-promise-native": "^1.0.3"
+  }
+}
