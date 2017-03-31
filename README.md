@@ -41,3 +41,18 @@ Sample settings.json is already provided
     "delimiter": " "
 }
 ```
+## Reaction Nav
+Using the reaction nav provided is simple
+```js
+    msg.react('▶').then(
+    msg.react('◀')).then(
+    msg.react('⏩')).then(
+    msg.react('⏪')
+    );
+bot.emit('addNav', { message: msg, exec: p2str, arr: plist, index: 0 });
+/**
+message => is the sent message
+exec => is a function that works on the values in arr[index] to give a text
+arr => array of data
+index => start index
+**/
