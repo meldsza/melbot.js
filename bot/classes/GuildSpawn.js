@@ -1,13 +1,10 @@
 /**
  * ----------------------Guilding---------------------------
- * Guilding is a new concept of storing data for a particular guild. A collection of guildings will be used by the guild manager
- * Add more options if you want to extend the list of guild based list of something.
- * Note that these should be data accessible through discord only 
- * and no permanent data should be stored here since it will get reset on restart
- * We will be using it to make our bot do complex music operations
+ * Guilding is a new concept of spawning instances for each guild
  * 
  */
-module.exports = class Guild {
+const cp = require('child_process')
+module.exports = class GuildSpawn {
     constructor(guild) {
         this.id = guild.id;
         /**
@@ -26,11 +23,9 @@ module.exports = class Guild {
             if (cn.includes("voice") || cn.includes("music"))
                 return c;
         });
-        this.voice_handler = null;
-        this.voice_connection = null;
-        this.stopped = true;
-        this.inform_np = true;
         this.queue = [];
+        this.spawnComplete = false;
+        this.p = cp.fork('./../lib/musicFork.js', [guild.id, this.voice_channel.id, this.text_channel.id]);
     };
 
 }
