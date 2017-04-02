@@ -20,17 +20,17 @@ let inform_np = true;
  * List of commands
  */
 const cmd = {
-    play: function (URL, user, channel) {
+    play: function (url, user, channel) {
         let member = guild.member(bot.users.get(user));
         if (!url.includes("http")) {
             if (is_queue_empty())
-                process.exit();
+                setTimeout(() => process.exit(), 1000);
         }
         console.log("QUEUE size" + queue.length);
         member.setVoiceChannel(voice_channel).catch(() => {
             message.reply("JOIN A VOICE CHANNEL");
             if (is_queue_empty())
-                process.exit();
+                setTimeout(() => process.exit(), 1000);
         });
         if (text_channel == null)
             text_channel = channel;
@@ -68,7 +68,7 @@ const cmd = {
             bot.channels.get(channel).sendMessage("Stopping!");
         }
         voice_connection.disconnect();
-        process.exit();
+        setTimeout(() => process.exit(), 1000);
     },
     pause: function (message, user, channel) {
         if (stopped) {
@@ -116,6 +116,9 @@ const cmd = {
  * Listen to commands here
  */
 process.on('message', (m) => {
+    if (typeof m !== 'object')
+        return console.log(m);
+    console.log(m);
     cmd[m.cmd](m.message, m.user, m.channel);
 });
 /**
@@ -167,7 +170,7 @@ function play_next_song() {
             play_next_song();
         } else if (is_queue_empty()) {
             voice_connection.disconnect();
-            process.exit();
+            setTimeout(() => process.exit(), 1000);
         }
     });
 
@@ -181,3 +184,4 @@ function is_queue_empty() {
 function is_bot_playing() {
     return voice_handler !== null;
 }
+process.on('error', process.send);

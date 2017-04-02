@@ -8,11 +8,18 @@ exports.play = function (URL, message) {
         guilds[message.guild.id] = new GuildSpawn(message.guild);
 
         guilds[message.guild.id].p.on('message', m => {
+            guilds[message.guild.id].p.send("message:test");
+            console.log(m);
             if (m.guild === message.guild.id) {
                 guilds[message.guild.id].spawnComplete = true;
-                for (mes in guilds[message.guild.id].queue)
+                guilds[message.guild.id].queue.forEach((mes) => {
                     guilds[message.guild.id].p.send(mes);
+                });
             }
+
+        });
+        guilds[message.guild.id].p.on('close', () => {
+            console.log("child exitted");
         });
     }
     let ms = { cmd: 'play', message: URL, user: message.author.id, channel: message.channel.id };
