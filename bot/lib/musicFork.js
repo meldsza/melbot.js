@@ -6,7 +6,7 @@ const streamOptions = {
     seek: 0,
     volume: 0.5
 };
-var bot = require('../utils/bot');
+var bot = require('./../bot');
 module.exports = {};
 exports = module.exports;
 const guild = bot.guilds.get(process.argv[2]);

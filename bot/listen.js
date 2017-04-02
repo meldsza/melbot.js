@@ -1,6 +1,7 @@
 const bot = require('./bot.js');
 const settings = require('./../settings.json');
 const modules = require('./modules.js');
+const commands = require('./commands');
 let lock = false;
 bot.on('error', (err) => {
     /**
@@ -13,7 +14,7 @@ bot.on('message', (message) => {
     /**
      * if locked, reject everything except dm
      */
-    if (locked) {
+    if (lock) {
         if (message.channel.guild)
             return;//not DM
     }
@@ -24,7 +25,7 @@ bot.on('message', (message) => {
         /**Extracting params */
         let params = message.content.substring(settings.identifier.length).trim();
         params = params.split(settings.delimiter || ' ');
-        let cmd = params.shift.trim();
+        let cmd = params.shift().trim();
         commands.execute(cmd.toLowerCase(), params, message)
     }
     else if (message.isMentioned(bot.user)) {

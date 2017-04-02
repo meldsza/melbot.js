@@ -11,10 +11,11 @@ const getcommands = () => {
         }
     );
 }
+getcommands();
 module.exports = {
     execute: function (cmd, params, message) {
-        if (Object.keys(commands).exists(cmd)) {
-            commands[cmd].execute(params, message).catch(err => message.channel.sendCode('error', err));
+        if (commands[cmd]) {
+            commands[cmd].execute(params, message).catch(err => message.channel.sendCode('error', err + "\n" + err.stack));
         }
         else if (cmd === 'help')
             help(message);

@@ -10,7 +10,10 @@ module.exports = class GuildSpawn {
         /**
          * voice_channel stores voice channel for that guild
          */
-        this.voice_channel = guild.channels.filter('type', 'voice').find((c) => {
+        this.voice_channel = guild.channels.filter((c) => {
+            if (c.type === 'voice')
+                return c;
+        }).find((c) => {
             let cn = c.name.toLowerCase();
             if (cn.includes("music") || cn.includes("voice"))
                 return c;
@@ -18,14 +21,17 @@ module.exports = class GuildSpawn {
         /**
          * text_channel stores text channel which issues music commands
          */
-        this.text_channel = guild.channels.filter('type', 'text').find((c) => {
+        this.text_channel = guild.channels.filter((c) => {
+            if (c.type === 'text')
+                return c;
+        }).find((c) => {
             let cn = c.name.toLowerCase();
             if (cn.includes("voice") || cn.includes("music"))
                 return c;
         });
         this.queue = [];
         this.spawnComplete = false;
-        this.p = cp.fork('./../lib/musicFork.js', [guild.id, this.voice_channel.id, this.text_channel.id]);
+        this.p = cp.fork('./bot/lib/musicFork.js', [guild.id, this.voice_channel.id, this.text_channel.id]);
     };
 
 }

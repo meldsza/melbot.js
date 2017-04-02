@@ -1,20 +1,19 @@
-var bot = require('../utils/bot');
+var bot = require('../bot.js');
 module.exports = {};
 exports = module.exports;
 var guilds = {};
 const GuildSpawn = require('./../classes/GuildSpawn');
 exports.play = function (URL, message) {
     if (!guilds[message.guild.id]) {
-        guilds[message.guild.id] = new GuildSpawn(guild);
+        guilds[message.guild.id] = new GuildSpawn(message.guild);
 
-        guilds[message.guild.id].p.on('message', m)
-        {
+        guilds[message.guild.id].p.on('message', m => {
             if (m.guild === message.guild.id) {
                 guilds[message.guild.id].spawnComplete = true;
                 for (mes in guilds[message.guild.id].queue)
                     guilds[message.guild.id].p.send(mes);
             }
-        }
+        });
     }
     let ms = { cmd: 'play', message: URL, user: message.author.id, channel: message.channel.id };
     if (guilds[message.guild.id].spawnComplete)

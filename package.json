@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/meldsza/melbot.js#readme",
   "dependencies": {
-    "request-promise-native": "^1.0.3",
     "discord.js": "^11.0.0",
-    "node-opus": "^0.2.0"
+    "node-opus": "^0.2.0",
+    "request-promise-native": "^1.0.3",
+    "uws": "^0.14.1",
+    "ytdl-core": "^0.10.4"
   }
 }
