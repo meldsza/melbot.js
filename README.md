@@ -56,3 +56,6 @@ exec => is a function that works on the values in arr[index] to give a text
 arr => array of data
 index => start index
 **/
+```
+## Complex music module
+Melbot.js comes with a complex music module which spawns new instances of itself and manages the music overload. This makes sure that you have maximum performance always 
