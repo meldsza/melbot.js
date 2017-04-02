@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const settings = require('./../settings.json');
 const client = new Discord.Client();
 
-var dt = process.argv[2] || process.env.DISCORD_TOKEN || settings.token;
+var dt = process.env.DISCORD_TOKEN || settings.token;
 
 if (!dt) {
     console.log('required DISCORD_TOKEN env variable or argument');
