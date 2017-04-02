@@ -6,12 +6,12 @@ const streamOptions = {
     seek: 0,
     volume: 0.5
 };
-var bot = require('./../bot');
+const bot = require('./../bot');
 module.exports = {};
 exports = module.exports;
-const guild = bot.guilds.get(process.argv[2]);
-const voice_channel = bot.channels.get(process.argv[3]);
-let text_channel = bot.channels.get(process.argv[4]);
+let guild = process.argv[2];
+let voice_channel = process.argv[3];
+let text_channel = process.argv[4];
 let queue = [];
 let voice_connection = null;
 let stopped = false;
@@ -122,6 +122,9 @@ process.on('message', (m) => {
  * send Ready statement
  */
 bot.on('ready', () => {
+    guild = bot.guilds.get(guild);
+    voice_channel = bot.channels.get(voice_channel);
+    text_channel = bot.channels.get(text_channel);
     process.send({ guild: guild.id });
 });
 /**
