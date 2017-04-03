@@ -59,4 +59,3 @@ index => start index
 ```
 ## Complex music module
 Melbot.js comes with a complex music module which spawns new instances of itself and manages the music overload. This makes sure that you have maximum performance always 
-<meta name="google-site-verification" content="_iEg8-NzbWh0qr0v8ROnVjnZRNHYDJZ5f0wDQivy3hU" />
