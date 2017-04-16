@@ -1,4 +1,4 @@
-# Melbot.js is a comprehensive bot framework for discord.js
+# Melbot.js is a bot template using discord.js
 ## Adding commands
 The commands must follow a certain format
 ```js
